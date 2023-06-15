@@ -33,6 +33,6 @@ https://repo1.maven.org/maven2/net/java/dev/jna/jna/
 9. `sudo wget -P /usr/share/elasticsearch/lib https://repo1.maven.org/maven2/net/java/dev/jna/jna/5.10.0/jna-5.10.0.jar`
 10. `echo 'xpack.ml.enabled: false' | sudo tee -a /etc/elasticsearch/elasticsearch.yml`
 11. `echo 'xpack.security.enabled: false' | sudo tee -a /etc/elasticsearch/elasticsearch.yml`
-12. sudo systemctl enable elasticsearch
-13. sudo systemctl start elasticsearch
+12. `sudo systemctl enable elasticsearch`
+13. `sudo systemctl start elasticsearch`
 14. (optional) use `sudo cat /var/log/elasticsearch/elasticsearch.log` and/or `sudo systemctl status elasticsearch` to check if everything is running fine 

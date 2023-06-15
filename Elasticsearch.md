@@ -3,6 +3,11 @@
 Elasticsearch can be used with e.g. [Nextcloud]() (in conjunction with [Full Text Search](https://apps.nextcloud.com/apps/fulltextsearch) and [Elasticsearch Platform](https://apps.nextcloud.com/apps/fulltextsearch_elasticsearch))
 for indexing file contents so they can be searched easily.
 
+## Setup
+This is the setup I currently use and that this documentation is tested on and confirmed working.
+- Nextcloud 27.0.0
+- PHP 8.1.20
+
 ## Context
 This documentation is written for my personal use. You are free to follow the steps or reference them, but I give absolutetly no guarantee or support for anything written here.
 However you can of course create [Pull Requests](https://github.com/phil-lipp/RaspberryPi_Nextcloud/pulls) in case you find some errors.
@@ -36,3 +41,12 @@ https://repo1.maven.org/maven2/net/java/dev/jna/jna/
 12. `sudo systemctl enable elasticsearch`
 13. `sudo systemctl start elasticsearch`
 14. (optional) use `sudo cat /var/log/elasticsearch/elasticsearch.log` and/or `sudo systemctl status elasticsearch` to check if everything is running fine 
+
+# Configuring Elasticsearch for Nextcloud
+- install the base App `sudo -u www-data php /var/www/nextcloud/occ app:install fulltextsearch`
+- install the elasticsearch platform, so you can use elasticsearch with the fulltextsearch app using `sudo -u www-data php /var/www/nextcloud/occ app:install fulltextsearch_elasticsearch`
+- install the extension for the files app: `sudo -u www-data php /var/www/nextcloud/occ app:install files_fulltextsearch`
+- (optional) install the tesseract (OCR) extension `sudo -u www-data php /var/www/nextcloud/occ app:install files_fulltextsearch_tesseract`
+- configure the Full Text Search by logging into Nextcloud as Admin and going to "Administration" -> "Search" (it's important you select "Elasticsearch" as plattform, yoou could leave everything else as is, but could also change whatever you feel like. I activated the OCR and the scanning of PDFs)
+- put a file named ".noindex" in each folder that you want to exclude from being indexed
+- run `occ fulltextsearch:index` to trigger the indexing of all files (of course without the ones within excluded folder defined as explained above)

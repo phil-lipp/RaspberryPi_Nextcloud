@@ -24,7 +24,7 @@ https://repo1.maven.org/maven2/net/java/dev/jna/jna/
 1. `sudo apt install libasound2 libatk1.0-0 libcairo2 libfontconfig1 libfreetype6 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk2.0-0 libpango-1.0-0 libpangocairo-1.0-0 libpangoft2-1.0-0 libstdc++6 libx11-6 libxml2 libxslt1.1 libxtst6`
 2. `wget https://github.com/bell-sw/Liberica/releases/download/20.0.1%2B10/bellsoft-jre20.0.1+10-linux-arm32-vfp-hflt.deb`
 3. `sudo dpkg -i bellsoft-jre20.0.1+10-linux-arm32-vfp-hflt.deb`
-3.1 if above fails: `sudo apt --fix-broken install` then repeat step 3
+- if above fails: `sudo apt --fix-broken install` then repeat step 3
 4. `sudo mkdir -p /usr/share/elasticsearch/jdk`
 5. `sudo cp -rf /usr/lib/jvm/bellsoft-java20-runtime-arm32-vfp-hflt/* /usr/share/elasticsearch/jdk`
 6. `wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.8.1-arm64.deb`

@@ -38,11 +38,14 @@ https://repo1.maven.org/maven2/net/java/dev/jna/jna/
 9. `sudo wget -P /usr/share/elasticsearch/lib https://repo1.maven.org/maven2/net/java/dev/jna/jna/5.10.0/jna-5.10.0.jar`
 10. `echo 'xpack.ml.enabled: false' | sudo tee -a /etc/elasticsearch/elasticsearch.yml`
 11. `echo 'xpack.security.enabled: false' | sudo tee -a /etc/elasticsearch/elasticsearch.yml`
-12. `sudo systemctl enable elasticsearch`
-13. `sudo systemctl start elasticsearch`
-14. (optional) use `sudo cat /var/log/elasticsearch/elasticsearch.log` and/or `sudo systemctl status elasticsearch` to check if everything is running fine 
+12. (optional?) `echo 'ingest.geoip.downloader.enabled: false' | sudo tee -a /etc/elasticsearch/elasticsearch.yml`
+13. `sudo systemctl enable elasticsearch`
+14. `sudo systemctl start elasticsearch`
+15. (optional) use `sudo cat /var/log/elasticsearch/elasticsearch.log` and/or `sudo systemctl status elasticsearch` to check if everything is running fine
+16. (optional?) `echo 'xpack.security.enrollment.enabled: false' | sudo tee -a /etc/elasticsearch/elasticsearch.yml`
 
 # Configuring Elasticsearch for Nextcloud
+- use `sudo nano /etc/elasticsearch/elasticsearch.yml` and have a look at the file and adapt it to your setup
 - install the base App `sudo -u www-data php /var/www/nextcloud/occ app:install fulltextsearch`
 - install the elasticsearch platform, so you can use elasticsearch with the fulltextsearch app using `sudo -u www-data php /var/www/nextcloud/occ app:install fulltextsearch_elasticsearch`
 - install the extension for the files app: `sudo -u www-data php /var/www/nextcloud/occ app:install files_fulltextsearch`

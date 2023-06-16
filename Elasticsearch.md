@@ -46,7 +46,7 @@ https://repo1.maven.org/maven2/net/java/dev/jna/jna/
 - install the base App `sudo -u www-data php /var/www/nextcloud/occ app:install fulltextsearch`
 - install the elasticsearch platform, so you can use elasticsearch with the fulltextsearch app using `sudo -u www-data php /var/www/nextcloud/occ app:install fulltextsearch_elasticsearch`
 - install the extension for the files app: `sudo -u www-data php /var/www/nextcloud/occ app:install files_fulltextsearch`
-- (optional) install the tesseract (OCR) extension `sudo -u www-data php /var/www/nextcloud/occ app:install files_fulltextsearch_tesseract`
+- (optional) install the tesseract (OCR) extension `sudo -u www-data php /var/www/nextcloud/occ app:install files_fulltextsearch_tesseract`(look at [my Tesseract documentation](https://github.com/phil-lipp/RaspberryPi_Nextcloud/blob/main/Tesseract.md) for instructions)
 - configure the Full Text Search by logging into Nextcloud as Admin and going to "Administration" -> "Search" (it's important you select "Elasticsearch" as plattform, yoou could leave everything else as is, but could also change whatever you feel like. I activated the OCR and the scanning of PDFs)
 - put a file named ".noindex" in each folder that you want to exclude from being indexed
 - run `occ fulltextsearch:index` to trigger the indexing of all files (of course without the ones within excluded folder defined as explained above)
